@@ -1,11 +1,18 @@
 
 # Steps :
 
-Execute this script :
+Execute with docker-compose :
+
+```
+docker-compose up
+``` 
+
+
+Or Execute this script :
 
 ```./build_exec.sh```
 
-or these two docker commands :
+Or these two docker commands :
 
 1) Build Docker image
 
@@ -14,9 +21,8 @@ or these two docker commands :
 2) Launch the container and execute
 
 ``` 
-docker run -it \
-	-e DISPLAY=:0 \
-	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	--rm --name HelloWorld-graph-container \
-	hello_world-graph-c-docker 
+docker run --rm -it \
+	-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+	-v ~/.Xauthority:/home/user/.Xauthority:ro \
+	-e DISPLAY hello_world-graph-c-docker
 ```
